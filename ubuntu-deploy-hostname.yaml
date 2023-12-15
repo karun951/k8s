@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-deployment
+  namespace: alpha
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      hostname: karun
+      containers:
+      - name: ubuntu-container
+        image: ubuntu
+        env:
+        - name: ENV1
+          value: "Hello from the env variable"
+        - name: ENV2
+          value: "it is simple"
+        command: ["/bin/sleep", "infinity"]
+      restartPolicy: Always

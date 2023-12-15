@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+  namespace: alpha
+  labels:
+    app: testpod
+spec:
+  containers:
+  - name: testcontainer
+    image: nginx:latest
+  restartPolicy: Never
